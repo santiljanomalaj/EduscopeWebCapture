@@ -1,0 +1,74 @@
+{  
+   "name":"Eduscope Web Capture",
+   "short_name":"Eduscope Web Capture",
+   "author":"Tian",
+   "version":"1.1",
+   "manifest_version":2,
+   "minimum_chrome_version":"49",
+   "description":"Capture Screen in 4K with Picture in Picture Webcam and Mic and save in MP4 format",    
+   "background":{  
+      "scripts":[  
+         "background/background.common.js",
+         "background/background.js",
+         "background/background.desktopCapture.js",
+         "background/background.tabCapture.js",
+         "background/background.badgeText.js",
+         "background/background.getUserMedia.js",
+         "background/background.messaging.js",
+         "background/background.players.js",
+         "RecordRTC/MediaStreamRecorder.js",
+         "RecordRTC/MultiStreamRecorder.js",
+         "RecordRTC/MultiStreamsMixer.js",
+         "RecordRTC/StereoAudioRecorder.js",
+         "RecordRTC/DiskStorage.js",
+         "RecordRTC/EBML.js"
+      ],
+      "persistent":false
+   },
+   "content_scripts":[  
+      {  
+        "matches":[  
+          "<all_urls>"
+        ],
+        "js":[  
+            "background/background.contentScript.js",
+            "background/jquery.min.js"
+        ],
+        "all_frames": true,
+        "run_at": "document_start"
+      }
+    ],
+   "browser_action":{  
+      "default_icon":"images/main-icon.png",
+      "default_title":"Record Your Screen,Tab or Camera",
+      "default_popup": "dropdown.html"
+   },
+   "icons":{  
+      "16":"images/main-icon.png",
+      "22":"images/main-icon.png",
+      "32":"images/main-icon.png",
+      "48":"images/main-icon.png",
+      "128":"images/main-icon.png"
+   },    
+   "permissions":[  
+      "desktopCapture",
+      "storage",
+      "tabs",
+      "activeTab",
+      "tabCapture",
+      "<all_urls>",
+      "cookies",
+      "identity"      
+   ],
+   "oauth2": {
+       "client_id": "41556190767-44cbqasurg3dhfr9hmj1v90q5v8r9v46.apps.googleusercontent.com",
+       "scopes": [
+         "https://www.googleapis.com/auth/youtube.upload",
+         "https://www.googleapis.com/auth/youtube"
+       ]
+   },
+   "content_security_policy": "script-src 'self' https://apis.google.com; object-src 'self'",
+   "web_accessible_resources":[  
+      "images/main-icon.png"
+   ]
+}

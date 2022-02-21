@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ body{
+   width: 350px;
+   min-height: 200px;
+  margin: 0px;
+ }
+ ul{
+  list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    height: 50px;
+    background-color: #dededeed;
+ }
+ a{
+    text-decoration: none;
+    font-size: 21px;
+    font-family: sans-serif;
+    color: black;
+    padding-left: 8px;
+ }
+li{
+  padding: 10px 20px 10px 20px;
+  cursor: pointer;
+}
+li:hover{
+  background-color: #bbbbbb8f;
+}
+ img{
+  width: 25%;
+    cursor: pointer;
+    margin: -1px 53px;
+ }
+ 
+.head{
+  width: 100%;
+  height: 60px;
+  background-color: #01446d;
+}
+.head img{
+    width: 11%;
+    float: right;
+    position: relative;
+    top: 17px;
+    margin-right: 10px;
+}
+ 
+ 
+</style>
+<title>list</title>
+</head>
+<body>
+  <div class="head">
+    <div style="width: 60%;height: 100%;float: left;">
+      <img src="images/logo2.png" style="float: left;
+      margin-left: 0px;
+      width: 83%;
+      padding: 0;
+      margin-top: -17px;"> 
+    </div>  
+    <div style="width: 40%; height: 100%;float: left;">
+      <h2 style="text-shadow: 2px 0px 2px #d1d1d2;
+      margin: 7px -10px;
+      color: white;">WEB<br> CAPTURE 1.1</h2>
+    </div>
+  </div>
+  <div style="width: 100%;height: 100%;padding:10px;">
+    <h2>Your recording has started</h2>
+    <h3 id="duration">Current Duration:</h3>
+    <h3 id="restDuration">Your recording will end in</h3>
+  </div>
+  <div style="width: 100%;height: 100%;">
+    <ul>
+      <li class="li_pause" id="pause_recording" style="display: none;">
+        <img src="images/pause.png"  alt="pause">
+      </li>
+      <li class="li_resume" id="resume_recording" >
+        <img src="images/play.png"  alt="resume">
+      </li>
+      <li id="stop_recording">
+        <img src="images/stop1.png"  alt="stop">
+      </li>
+    </ul>
+  </div>
+    <script src="RecordRTC/getAllAudioVideoDevices.js"></script>
+    <script src="control.js"></script>
+</body>
+</html>

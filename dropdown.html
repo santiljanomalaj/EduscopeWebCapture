@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ body{
+   width: 350px;
+   min-height: 480px;
+  margin: 0px;
+ }
+ ul{
+   list-style: none;
+ }
+ #nav{
+  list-style: none;
+    display: inline-flex;
+    padding: 0px;
+    margin: 2px 17px;
+ }
+ .nav-content li{
+  margin-top: 3px;
+ }
+ .nav-content b{
+    font-size: 14pt;
+    color: #3F51B5;
+    text-shadow: 1px 0px 4px #CDDC39;
+    position: relative;
+    top: -12px;
+    left: 20px;
+ }
+ .nav{
+    padding: 5px;
+    /* background-color: #CDDC39; */
+    /* margin-left: 17px; */
+    border-radius: 4px;
+    width: 50%;
+    text-align: center;
+ }
+ .nav a{
+    text-decoration: none;
+    color: #01446d;
+    font-size: 10pt;
+    font-weight: bold;
+ }
+ img{
+   width: 30%;
+   cursor: pointer;
+ }
+ .hide{
+   display: none;
+ }
+ .active{
+   background-color: #ececec;
+ }
+ #start{
+  background: #01446d;
+    border: none;
+    border-radius: 4px;
+    padding: 3% 29%;
+    margin-left: 24px;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: unset;
+    margin: 12px 26px;
+ }
+ #start:hover{
+   background-color: rgb(5, 92, 146);
+ }
+ #cancel{
+  background: rgb(238, 163, 23);
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    margin-left: 40px;
+    color: white;
+    font-weight: bold;
+ }
+ #cancel:hover{
+   background-color: rgb(235, 137, 9);
+ }
+
+ /* switch */
+ .switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 25px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 7px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #01446d;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #01446d;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(14px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.head{
+  width: 100%;
+  height: 60px;
+  background-color: #01446d;
+}
+.head img{
+    width: 11%;
+    float: right;
+    position: relative;
+    top: 17px;
+    margin-right: 10px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  right: -75px;
+  background-color: #fefefe;
+  width: 100%;
+  height: 100%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: left;
+  font-size: 28px;
+  font-weight: bold;
+  width: 10%;
+}
+#wrong_url{
+text-decoration: none;
+
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 3px 16px;
+  background-color: #005182;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;height: 80%;}
+
+.modal-footer {
+  padding: 3px 16px;
+  background-color: #005182;
+  color: white;
+  display: none;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {right: -700px; opacity: 0} 
+  to {right: -75px; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {right: -700px; opacity: 0}
+  to {right: -75px; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+#applying-changes {
+  background: #00000059;
+  position: fixed;
+  top: 0;
+  left: 0px;
+  height: 100%;
+  right: 0px;
+  width: 100%;
+  z-index: 2;
+  text-align: center;
+  color: green;
+  font-weight: bold;
+  display: none;
+  font-size: 24px !important;
+  padding: 0;
+  border-bottom: 1px solid;
+}
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+  background-color: #01446d99!important;
+}
+</style>
+<title>dropdown</title>
+</head>
+<body>
+  <div class="head">
+    <div style="width: 40%;height: 100%;float: left;">
+      <a href="list.html"><img src="images/list1.png" style="float: left;
+      margin-left: 20px;
+      width: 12%;"></a>
+      
+    </div>
+    <div style="width: 60%;height: 100%;float: left;">
+      <img id="myBtn" src="images/setting.png" alt="">
+      <!-- <img src="images/rang.png" alt="">
+      <img src="images/play.png" alt=""> -->
+    </div>
+    
+  </div>
+  <div style="height: 68px;">
+    <div style="float: left;width: 65%;background-color: #e4e3e3;height: 100%;">
+      <img src="images/logo.png" style="margin-left: 13%;margin-top:4%;width:80%;">
+    </div>
+    <div style="float: left; width: 35%;background-color: #e4e3e3;height: 100%;">
+      <h2 style="    text-shadow: 1px 1px 4px #3F51B5;">WEB<br> CAPTURE 1.1</h2>
+    </div>    
+  </div>
+  <!-- <div style="padding: 10px;font-size: 20px;text-align: center;"><b>Screencastify</b>free</div> -->
+  <ul id="nav">
+    <!-- <li class="nav" id="nav_tab" ><a href="#" ><div style="padding:10px;height: 30px;"><img src="images/tab.jpg" alt=""></div>BROWSER</a></li> -->
+    <li class="nav  active" id="nav_screen"><a href="#"><div style="padding: 10px;height: 30px;"><img src="images/desktop.png" alt=""></div>DESKTOP</a></li>
+    <li class="nav" id="nav_cam"><a href="#"><div style="padding: 10px;height: 30px;"><img src="images/webcam.png" alt=""></div>CAMERA</a></li>
+  </ul>
+  <div class="nav-content">
+    <div id="screen" style="height: 160px;">
+      <hr>  
+      <div style="width: 100%;height: 50px;margin-top: 10px;">
+        <div style="width: 15%; text-align: center;float: left;padding-top: 1px;">
+          <label class="switch">
+            <input type="hidden" id="screen_check" checked>
+            <input type="checkbox" checked id="microphone_check">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div style="width: 40%;
+        float: left;
+        font-size: 18px;
+        font-family: unset;
+        font-weight: bold;">
+          <span>MIC</span>
+        </div>
+        <div style="width: 45%;float: left;">
+          <select id="microphone-devices" style="width: 90%;height: 25px;border-bottom: 1px solid #000000;border-left: none;border-top: none;border-right: none;"></select>
+        </div>
+      </div>  
+      <div style="width: 100%;height: 50px;margin-top: 10px;">
+        <div style="width: 15%; text-align: center;float: left;padding-top: 1px;">   
+          <label class="switch">
+            <input type="checkbox" checked id="camera_check">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div style="    width: 40%;
+        float: left;
+        font-size: 18px;
+        font-family: unset;
+        font-weight: bold;">
+          <span>CAMERA</span>
+        </div>
+        <div style="width: 45%;float: left;">          
+          <select id="camera-devices" style="width: 90%;height: 25px;border-bottom: 1px solid #000000;border-left: none;border-top: none;border-right: none;"></select>          
+        </div>
+      </div>   
+      <div style="width: 100%;height: 50px;margin-top: 10px;">
+        <div style="width: 15%; text-align: center;float: left;padding-top: 1px;">   
+          <label class="switch">
+            <input type="checkbox" checked id="speaker_check">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div style="    width: 40%;
+        float: left;
+        font-size: 18px;
+        font-family: unset;
+        font-weight: bold;">
+          <span>SYSTEM SOUND</span>
+        </div>         
+      </div>   
+    </div>
+    <div id="tab"  style="height: 120px;">
+      <hr>
+      <input type="hidden"  id="tab_check">
+      <div style="width: 100%;height: 50px;margin-top: 10px;">
+        <div style="width: 15%; text-align: center;float: left;padding-top: 1px;">   
+          <label class="switch">
+            <input type="checkbox"  id="audio_check">            
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div style="    width: 40%;
+        float: left;
+        font-size: 18px;
+        font-family: unset;
+        font-weight: bold;">
+          <span>Audio Only</span>
+        </div> 
+        
+      </div> 
+    </div>
+    <div id="onlyWebcam" style="height: 120px;">
+      <hr>
+      <input type="hidden" id="cam_check">
+      <a id="btn-options" href="options.html" target="_blank">Options</a>
+      <h2 style="padding: 20px;">Camera + Microphone</h2>
+    </div>
+    <hr>
+
+    <label>
+      <button id="start">RECORD</button>        
+      <input type="hidden" id="stop-recording">
+    </label>
+    <h4 style="color: #03037d;
+      text-align: center;
+      margin: 0;
+      padding-bottom: 10px;"><a href="https://eduscopecloud.com/webcapture.php" target="_blank" id="wrong_url" >REGISTER HERE</a></h4>
+  </div> 
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close"><img src="images/close.png" style="    width: 50%;
+          margin-top: 18px;"></span>
+        <h2>ADVANCED</h2>
+      </div>
+      <div class="modal-body">
+        <div style="width: 83%;">
+          <table style="width: 100%;color:#044065;">
+            <tr>
+              <td style="width: 60%;
+              padding: 10px;
+              font-size: 15px;
+              font-weight: bold;">FRAME RATE</td>
+              <td style="width:40%;padding:10px;">
+                <select id="videoMaxFrameRates" style="width: 70%;
+                height: 26px;    border-bottom: 1px solid #000000;
+    border-left: none;
+    border-top: none;
+    border-right: none;">                  
+                  <option selected>30</option>
+                  <option>25</option>
+                  <option>15</option> 
+                </select><b>fps</b>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 60%;
+              padding: 10px;
+              font-size: 15px;
+              font-weight: bold;">CAMERA RESOLUTION</td>
+              <td style="width: 40%;padding:10px;">
+                <select id="videoResolutions"  style="width: 70%;
+                height: 26px;    border-bottom: 1px solid #000000;
+    border-left: none;
+    border-top: none;
+    border-right: none;">
+                  
+                </select><b>px</b>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 60%;
+              padding: 10px;
+              font-size: 15px;
+              font-weight: bold;">OUTPUT RESOLUTION</td>
+              <td style="width: 40%;padding:10px;">
+                <select id="screenResolutions"  style="width: 70%;
+                height: 26px;    border-bottom: 1px solid #000000;
+    border-left: none;
+    border-top: none;
+    border-right: none;">
+                  <option value="1920x1080" >1920x1080</option>
+                  <option value="1280x720" selected>1280x720</option>
+                  <option value="640x480">640x480</option>
+                  <option value="640x360">640x360</option>
+                  <option value="320x240">320x240</option>
+                  <option value="default">Default</option>
+                </select><b>px</b>
+              </td>
+            </tr> 
+            <tr>
+              <td style="width: 60%;
+              padding: 10px;
+              font-size: 15px;
+              font-weight: bold;">ENCODER</td>
+              <td style="width: 40%;padding:10px;">
+                <select id="videoCodec" style="width: 70%;
+                height: 26px;    border-bottom: 1px solid #000000;
+    border-left: none;
+    border-top: none;
+    border-right: none;">                  
+                  <option selected>H264</option>
+                  <option>VP8</option>
+                  <option>VP9</option> 
+                  <option>MKV</option>
+                  <option>Default</option>
+                </select>
+              </td>
+            </tr> 
+          </table>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <h3>Modal Footer</h3>
+      </div>
+    </div>    
+  </div>
+  <div id="applying-changes">
+    <img style="margin-top: 45%;" src="images/loading3.gif">
+  </div>
+    <script src="RecordRTC/getAllAudioVideoDevices.js"></script>
+    <script src="dropdown.js"></script>
+</body>
+</html>

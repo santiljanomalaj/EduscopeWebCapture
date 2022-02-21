@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ body{
+   width: 350px;
+   min-height: 480px;
+  margin: 0px;
+ }
+ ul{
+   list-style: none;
+   padding: 0;
+   margin: 0;
+ }
+ a{
+    text-decoration: none;
+    font-size: 21px;
+    font-family: sans-serif;
+    color: black;
+    padding-left: 8px;
+ }
+li{
+  padding: 18px;
+}
+li:hover{
+  background-color: #bbbbbb8f;
+}
+ img{
+   width: 30%;
+   cursor: pointer;
+ }
+ 
+.head{
+  width: 100%;
+  height: 60px;
+  background-color: #01446d;
+}
+.head img{
+    width: 11%;
+    float: right;
+    position: relative;
+    top: 17px;
+    margin-right: 10px;
+}
+ 
+ 
+</style>
+<title>list</title>
+</head>
+<body>
+  <div class="head">
+    <div style="width: 40%;height: 100%;float: left;">
+      <a href="dropdown.html"><img src="images/list1.png" style="float: left;
+      margin-left: 20px;
+      width: 12%;"></a>
+    </div>  
+  </div>
+  <ul>
+    <li>
+      <a href="preview.html" target="_blank">My Recordings</a>
+    </li>
+    <li>
+      <a href="help.html" target="_blank">Help</a>
+    </li>
+  </ul>
+ 
+    <script src="RecordRTC/getAllAudioVideoDevices.js"></script>
+    <script src="list.js"></script>
+</body>
+</html>
